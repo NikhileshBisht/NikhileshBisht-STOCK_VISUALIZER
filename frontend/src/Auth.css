@@ -1,0 +1,163 @@
+/* Auth.css */
+body,
+html,
+#root {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    /* Prevent scrolling */
+}
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #a1c4fd 0%, #c2e9fb 100%);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Moving Clouds Animation */
+.clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    opacity: 0.6;
+    pointer-events: none;
+    background: url('https://raw.githubusercontent.com/redstapler/animated-cloud-background-css/master/cloud1.png');
+    animation: moveClouds 25s linear infinite;
+    background-size: cover;
+}
+
+.clouds-second {
+    background: url('https://raw.githubusercontent.com/redstapler/animated-cloud-background-css/master/cloud2.png');
+    animation: moveClouds 35s linear infinite reverse;
+    opacity: 0.4;
+    z-index: 0;
+}
+
+@keyframes moveClouds {
+    0% {
+        background-position: 0px 0px;
+    }
+
+    100% {
+        background-position: 1000px 0px;
+    }
+}
+
+/* Glass/Modern Card */
+.auth-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.auth-header {
+    margin-bottom: 30px;
+}
+
+.auth-icon {
+    width: 50px;
+    height: 50px;
+    background: #f0f2f5;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 24px;
+    color: #333;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.auth-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.auth-subtitle {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Custom Input Styles override antd if needed, but antd is good */
+.custom-input {
+    border-radius: 8px;
+    background: #f5f7fa;
+    border: 1px solid transparent;
+    padding: 10px 15px;
+}
+
+.custom-input:hover,
+.custom-input:focus {
+    background: #fff;
+}
+
+.auth-button {
+    height: 44px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+}
+
+.auth-button:hover,
+.auth-button:focus {
+    background: #333 !important;
+    border-color: #333 !important;
+}
+
+.social-login-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-btn {
+    width: 80px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: white;
+    transition: all 0.2s;
+}
+
+.social-btn:hover {
+    background: #f9f9f9;
+    border-color: #d0d0d0;
+}
+
+.social-icon {
+    font-size: 18px;
+}
+
+/* OTP specific */
+.otp-container {
+    display: flex;
+    gap: 8px;
+}

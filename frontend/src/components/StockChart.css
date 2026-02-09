@@ -1,0 +1,148 @@
+.stock-chart-wrapper {
+  padding: 20px;
+  background: #f0f0f0;
+  min-height: 100%;
+}
+
+.stock-chart-wrapper h1 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+}
+
+.controls {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.controls input,
+.controls select,
+.controls button {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.controls button {
+  background: #1890ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.controls button:hover {
+  background: #40a9ff;
+}
+
+.symbol-select-container {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.symbol-select-container label {
+  font-weight: 500;
+  color: #333;
+}
+
+.symbol-select-container select {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  min-width: 300px;
+}
+
+.chart-container.resizable {
+  width: 100%;
+  resize: both;
+  overflow: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  /* Ensure tooltips are positioned relative to this container */
+}
+
+/* Tooltip/Menu for creating Buy/Sell */
+.chart-tooltip {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 1000;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.chart-tooltip button {
+  padding: 5px 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  background: #f0f0f0;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+
+.chart-tooltip button.buy-btn {
+  color: green;
+  font-weight: bold;
+}
+
+.chart-tooltip button.buy-btn:hover {
+  background: #e6fffa;
+}
+
+.chart-tooltip button.sell-btn {
+  color: red;
+  font-weight: bold;
+}
+
+.chart-tooltip button.sell-btn:hover {
+  background: #fff1f0;
+}
+
+.chart-tooltip button.cancel-btn {
+  color: #666;
+}
+
+.chart-tooltip button.cancel-btn:hover {
+  background: #e0e0e0;
+}
+
+/* Delete button for existing bookmarks */
+.delete-tooltip {
+  position: absolute;
+  z-index: 1001;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ffccc7;
+  transition: all 0.2s;
+}
+
+.delete-tooltip button {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.delete-tooltip button:hover {
+  background: #cf1322;
+}
