@@ -33,7 +33,7 @@ function Register() {
         }
         setLoadingOtp(true);
         try {
-            const response = await fetch('http://localhost:5000/send-otp', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/send-otp`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email }),
@@ -60,7 +60,7 @@ function Register() {
         }
         setLoadingVerify(true);
         try {
-            const response = await fetch('http://localhost:5000/verify-otp', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/verify-otp`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, otp }),
@@ -83,7 +83,7 @@ function Register() {
     const handleRegister = async () => {
         setLoadingRegister(true);
         try {
-            const response = await fetch('http://localhost:5000/register', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
