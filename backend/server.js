@@ -122,14 +122,12 @@ transporter.verify((error, success) => {
     }
 });
 
-// Endpoint to send OTP
 app.post('/send-otp', async (req, res) => {
     const { email } = req.body;
     if (!email) {
         return res.status(400).json({ message: 'Email is required' });
     }
 
-    // Check if email already exists
     try {
         const { data: users, error } = await supabase
             .from('users')
@@ -149,7 +147,7 @@ app.post('/send-otp', async (req, res) => {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     otpStore[email] = otp;
 
-    console.log(`[DEV] OTP for ${email}: ${otp}`); // Keep log for backup/dev
+    console.log(`[DEV] OTP for ${email}: ${otp}`);  
 
     try {
         await transporter.sendMail({

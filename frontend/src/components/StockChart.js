@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { createChart } from 'lightweight-charts';
 import Papa from 'papaparse';
 import './StockChart.css';
@@ -7,7 +7,6 @@ const StockChart = () => {
     const [symbol, setSymbol] = useState('');
     const [trades, setTrades] = useState([]); // CSV trades
     const [userBookmarks, setUserBookmarks] = useState([]); // User created bookmarks
-    const [selectedFile, setSelectedFile] = useState(null);
     const [showSymbolSelect, setShowSymbolSelect] = useState(false);
     const [availableSymbols, setAvailableSymbols] = useState([]);
 
@@ -36,8 +35,6 @@ const StockChart = () => {
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (!file) return;
-
-        setSelectedFile(file);
 
         Papa.parse(file, {
             header: true,
@@ -74,7 +71,6 @@ const StockChart = () => {
                 }
 
                 const processedTrades = Object.values(grouped).map(trade => {
-                    const avgPrice = trade.total / trade.volume;
                     const timestamp = Math.floor(new Date(trade.date).getTime() / 1000);
                     return {
                         time: timestamp,
@@ -92,18 +88,18 @@ const StockChart = () => {
         });
     };
 
-    const updateMarkers = () => {
+    const updateMarkers = useCallback(() => {
         if (lineSeriesRef.current) {
             // Merge CSV trades and User Bookmarks, sort by time
             const allMarkers = [...trades, ...userBookmarks].sort((a, b) => a.time - b.time);
             lineSeriesRef.current.setMarkers(allMarkers);
         }
-    };
+    }, [trades, userBookmarks]);
 
     // Update markers whenever trades or bookmarks change
     useEffect(() => {
         updateMarkers();
-    }, [trades, userBookmarks]);
+    }, [trades, userBookmarks, updateMarkers]);
 
     const loadChart = () => {
         if (!symbol) {
